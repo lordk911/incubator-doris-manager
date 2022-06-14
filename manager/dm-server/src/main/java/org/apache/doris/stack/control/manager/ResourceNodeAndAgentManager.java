@@ -396,7 +396,7 @@ public class ResourceNodeAndAgentManager {
         String agentInstallHome = configInfo.getInstallDir() + File.separator + "agent";
 
         log.info("to start agent with port {}", configInfo.getAgentPort());
-        String command = "cd %s && sh %s  --server %s --agent %d --port %d";
+        String command = "\"cd %s && sh %s  --server %s --agent %d --port %d\"";
         String cmd = String.format(command, agentInstallHome, AGENT_START_SCRIPT,
                 getServerAddr(), configInfo.getAgentNodeId(), configInfo.getAgentPort());
         SSH startSsh = new SSH(configInfo.getSshUser(), configInfo.getSshPort(),
@@ -433,7 +433,7 @@ public class ResourceNodeAndAgentManager {
         log.info("to uninstall {} agent", configInfo.getHost());
 //        String command = "cd %s && sh %s && rm -rf %s";
 //        String cmd = String.format(command, agentInstallHome, AGENT_STOP_SCRIPT, agentInstallHome);
-        String command = "cd %s && sh %s";
+        String command = "\"cd %s && sh %s\"";
         String cmd = String.format(command, agentInstallHome, AGENT_STOP_SCRIPT);
         SSH stopSsh = new SSH(configInfo.getSshUser(), configInfo.getSshPort(),
                 sshKeyFile.getAbsolutePath(), configInfo.getHost(), cmd);

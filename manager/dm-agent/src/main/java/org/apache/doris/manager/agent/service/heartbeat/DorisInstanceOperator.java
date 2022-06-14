@@ -439,7 +439,7 @@ public class DorisInstanceOperator {
         String mouduleRootDir = runningDir + File.separator + moduleName;
         String script = "bin" + File.separator + scriptName;
 
-        String cmdFormat = "cd %s && sh %s";
+        String cmdFormat = "\"cd %s && sh %s\"";
         final String shellCmd = String.format(cmdFormat, mouduleRootDir, script);
 
         log.info("begin to execute with bash: `" + shellCmd + "`");
